@@ -10,19 +10,23 @@ const addProduct = (product) =>
         quantity: product.quantity
     });
 const getProduct = () => firebase.db.collection('products').get();
+const onGetProducts = (callback) => firebase.db.collection('products').onSnapshot(callback);
 
 
 
 //Eventos del DOM
 window.addEventListener('DOMContentLoaded', async(event) => {
-    const querySnapshot = await getProduct();
     const ui = new UI();
-    querySnapshot.forEach(doc => {
-        const product = new Product(doc.data().name, doc.data().price, doc.data().quantity);
-        ui.addProduct(product);
-        event.preventDefault();
-        console.log(product);
+    onGetProducts((querySnapshot) => {
+        ui.deleteProductList();
+        querySnapshot.forEach(doc => {
+            const product = new Product(doc.data().name, doc.data().price, doc.data().quantity);
+            ui.addProduct(product);
+            event.preventDefault();
+            console.log(product);
+        })
     })
+
 })
 
 
