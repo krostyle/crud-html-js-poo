@@ -1,5 +1,6 @@
-import { Product, UI } from './classes/index';
 import firebase from "../database/firebase";
+import { Product, UI } from './classes/index';
+
 
 //Métodos CRUD para la base de datos
 
@@ -9,20 +10,18 @@ const addProduct = (product) =>
         price: product.price,
         quantity: product.quantity
     });
-const getProduct = () => firebase.db.collection('products').get();
+//const getProduct = () => firebase.db.collection('products').get();
 const onGetProducts = (callback) => firebase.db.collection('products').onSnapshot(callback);
 
-
-
 //Eventos del DOM
-window.addEventListener('DOMContentLoaded', async(event) => {
+window.addEventListener('DOMContentLoaded', e => {
     const ui = new UI();
     onGetProducts((querySnapshot) => {
         ui.deleteProductList();
         querySnapshot.forEach(doc => {
             const product = new Product(doc.data().name, doc.data().price, doc.data().quantity);
             ui.addProduct(product);
-            event.preventDefault();
+
             console.log(product);
         })
     })

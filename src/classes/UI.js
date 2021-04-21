@@ -2,7 +2,7 @@ export class UI {
     addProduct(product) {
         const productList = document.getElementById('product-list')
         const element = document.createElement('div');
-        element.innerHTML =
+        element.innerHTML +=
             `<div class="card text-center mb-4 mt-4 bg-primary">
                 <div class="card-body">
                     <strong>Producto</strong>: ${product.name}
@@ -17,6 +17,8 @@ export class UI {
 
     deleteProductList() {
         const productList = document.getElementById('product-list');
+        productList.replaceChild()
+
 
 
 
