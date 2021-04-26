@@ -8,7 +8,7 @@ export class UI {
                         <strong>Producto</strong>: ${product.name}
                         <strong>Precio</strong>: ${product.price}
                         <strong>Cantidad</strong>: ${product.quantity}
-                        <button class="btn btn-danger ml-2 float-right">Eliminar</button>
+                        <button class="btn btn-danger ml-2 float-right btn-delete" data-id="${product.id}">Eliminar</button>
                         <button class="btn btn-success float-right">Editar</button>
                     </div>                
             </div>`;
@@ -20,22 +20,15 @@ export class UI {
         while (productList.firstChild) {
             productList.removeChild(productList.firstChild);
         }
-
-
-
-
     }
 
-    deleteProduct() {
+    showMessage(message , cssClassBT) {
+        const div = document.createElement('div');
+        div.className=`alert alert-${cssClassBT} mt-2`;
+        div.appendChild(document.createTextNode(message));
 
-    }
-
-    showProducts(product) {
-        const productList = document.getElementById('product-list');
-
-    }
-
-    showMessage() {
-
+        const container = document.querySelector('.container');
+        const app = document.querySelector('#App');
+        container.insertBefore(div,app);
     }
 }
