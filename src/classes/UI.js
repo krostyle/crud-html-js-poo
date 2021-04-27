@@ -9,7 +9,7 @@ export class UI {
                         <strong>Precio</strong>: ${product.price}
                         <strong>Cantidad</strong>: ${product.quantity}
                         <button class="btn btn-danger ml-2 float-right btn-delete" data-id="${product.id}">Eliminar</button>
-                        <button class="btn btn-success float-right">Editar</button>
+                        <button class="btn btn-success float-right btn-edit" data-id="${product.id}">Editar</button>
                     </div>                
             </div>`;
         productList.appendChild(element);
@@ -22,13 +22,16 @@ export class UI {
         }
     }
 
-    showMessage(message , cssClassBT) {
+    showMessage(message, cssClassBT) {
         const div = document.createElement('div');
-        div.className=`alert alert-${cssClassBT} mt-2`;
+        div.className = `alert alert-${cssClassBT} mt-2`;
         div.appendChild(document.createTextNode(message));
 
         const container = document.querySelector('.container');
         const app = document.querySelector('#App');
-        container.insertBefore(div,app);
+        container.insertBefore(div, app);
+        setTimeout(() => {
+            document.querySelector('.alert').remove();
+        }, 3000)
     }
 }
