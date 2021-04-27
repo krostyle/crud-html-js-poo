@@ -1,3 +1,3 @@
 {
-    "presets": ["minify", "@babel/preset-env"]
+    "presets": ["@babel/preset-env"]
 }

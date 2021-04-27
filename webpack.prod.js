@@ -5,7 +5,7 @@ const HtmlWPP = require('html-webpack-plugin')
 module.exports = {
     mode: 'production',
     output: {
-        filename: 'main.[contenthash].js',
+        filename: 'index.[contenthash].js',
         clean: true
     },
     module: {
