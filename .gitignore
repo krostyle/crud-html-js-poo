@@ -1,4 +1,4 @@
 /node_modules/
 /dist/
 /.firebase/
-/firestore-debug-log/
+/firestore-debug.log/
