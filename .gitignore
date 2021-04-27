@@ -2,4 +2,3 @@
 /dist/
 .firebase
 .firestore-debug.log
-docs
